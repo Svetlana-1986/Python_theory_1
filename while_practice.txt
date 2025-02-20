@@ -1,0 +1,85 @@
+﻿1. Вы копите деньги, чтобы достичь определённой цели. У вас есть список доходов, и вы хотите:
+
+    ✔️  Накопить сумму, складывая доходы по порядку;
+
+    ✔️  Определить, достигнута ли целевая сумма или нет.
+
+Напишите программу, которая:
+
+Принимает на вход список чисел (доходов) через пробел в одной строке и целевую сумму на следующей строке;
+ 
+Складывает числа из списка по порядку, используя цикл while;
+ 
+Прекращает процесс, как только сумма становится больше или равна целевой;
+ 
+Выводит итоговую накопленную сумму и на отдельной строке сообщение:
+«Цель достигнута», если итоговая сумма больше или равна целевой;
+ 
+«Цель не достигнута», если список закончился, а сумма осталась меньше целевой.
+
+
+incomes = list(map(int, input().split())) 
+target = int(input())
+
+
+accumulated_sum = 0
+index = 0
+
+# Пока накопленная сумма меньше целевой и есть доходы для добавления
+while accumulated_sum < target and index < len(incomes):
+    accumulated_sum += incomes[index]
+    index += 1
+
+
+print(accumulated_sum)
+
+if accumulated_sum >= target:
+    print("Цель достигнута")
+else:
+    print("Цель не достигнута")
+
+
+
+ИГРА
+
+from random import randint
+
+n = 1
+start = 1
+stop = 10
+
+name = input('Enter your name: ')
+print(f'{name}: Your {n} try')
+sum_player = 0
+
+while n <= 3:
+    # Ask if the player wants to continue *before* adding the score.
+    print(f'Do you want to continue play? Enter "yes" or "no"?')
+    decision = input().strip().lower()
+
+    if decision == "yes":
+        num = randint(start, stop)
+        sum_player += num
+        print(f'Your score this round: {num}')
+        print(f'Total score: {sum_player}')
+        n += 1  # Increment only after the decision and score
+    elif decision == "no":
+        print(f'You are finished! Final score: {sum_player}')
+        break
+    else:
+        print(f'Invalid input. Please enter "yes" or "no".')
+
+# Final outcome check
+if sum_player == 21:
+    print(f'{name} wins!!! Your final score: {sum_player}.')
+elif 17 <= sum_player < 21:
+    print(f'{name}, you almost made it! Your final score: {sum_player}.')
+else:
+    print(f"{name}, not quite. Try next time, you'll make it! Your final score: {sum_player}.")
+
+
+
+
+
+
+
